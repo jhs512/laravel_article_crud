@@ -483,6 +483,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-mt-4 {
   margin-top: 1rem;
 }
+.t-mr-auto {
+  margin-right: auto;
+}
 .t-block {
   display: block;
 }
@@ -510,6 +513,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-flex-grow {
   flex-grow: 1;
 }
+.t-auto-cols-min {
+  grid-auto-columns: -webkit-min-content;
+  grid-auto-columns: min-content;
+}
+.t-auto-cols-max {
+  grid-auto-columns: -webkit-max-content;
+  grid-auto-columns: max-content;
+}
+.t-grid-flow-col {
+  grid-auto-flow: column;
+}
 .t-grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -530,6 +544,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.t-rounded {
+  border-radius: 0.25rem;
+}
 .t-bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -543,6 +560,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .t-pr-2 {
   padding-right: 0.5rem;
+}
+.t-text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.t-font-bold {
+  font-weight: 700;
 }
 .t-text-gray-500 {
   --tw-text-opacity: 1;

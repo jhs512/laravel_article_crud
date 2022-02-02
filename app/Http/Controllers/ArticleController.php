@@ -51,8 +51,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        echo json_encode($article->toArray());
-        //
+        return view('articles.detail', [
+            'article' => $article
+        ]);
     }
 
     /**
