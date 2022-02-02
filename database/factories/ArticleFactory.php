@@ -16,7 +16,7 @@ class ArticleFactory extends Factory
         return [
             'user_id' => rand(1, 10),
             'title' => $this->faker->sentence(),
-            'body' => $this->faker->text(20),
+            'body' => $this->faker->text(200),
         ];
     }
 }

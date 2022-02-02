@@ -10,7 +10,7 @@
 </head>
 
 <body class="t-flex t-flex-col t-min-h-screen">
-    <header class="t-top-bar t-fixed t-top-0 t-left-0 t-w-full t-z-50 t-h-10 t-shadow t-text-gray-500 t-bg-white">
+    <header class="t-top-bar t-fixed t-top-0 t-left-0 t-w-full t-z-50 t-h-10 t-shadow t-text-gray-500 t-bg-white t-pr-2">
         <div class="t-container t-mx-auto t-h-full t-flex">
             <a href="{{ route('home') }}" class="t-flex t-items-center t-px-4">
                 <i class="fas fa-horse-head"></i>
@@ -64,7 +64,7 @@
     <!-- 상단바의 높이만큼 -->
     <div class="t-h-10"></div>
 
-    <main class="t-flex-grow t-flex t-col">
+    <main class="t-flex-grow t-flex t-flex-col">
         @yield('content')
     </main>
 </body>
