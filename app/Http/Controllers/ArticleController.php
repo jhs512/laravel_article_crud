@@ -14,8 +14,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        echo 'index';
-        //
+        $articles = Article::orderBy('id', 'desc')->get();
+
+        return view('articles.list', [
+            'articles' => $articles
+        ]);
     }
 
     /**
