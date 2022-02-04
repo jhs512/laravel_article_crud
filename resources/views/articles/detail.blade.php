@@ -7,7 +7,7 @@
         <div class="t-container t-mx-auto t-px-4">
             <div class="t-grid t-grid-cols-1 t-gap-4">
 
-                <div class="t-flex t-gap-4">
+                <div class="t-flex t-gap-4 t-flex-wrap">
                     <div>
                         <span class="badge bg-primary">{{ $article->id }}</span>
                     </div>
