@@ -13,14 +13,33 @@
                                 <img src="{{ $article->thumb_img_url }}" class="card-img-top">
                             </a>
                             <div class="card-body">
-                                <a href="{{ route('articles.show', $article->id) }}"
-                                    class="t-block card-title t-truncate">{{ $article->title }}</a>
-                                <a href="{{ route('articles.show', $article->id) }}"
-                                    class="t-block card-text t-mt-2 t-text-gray-500">
-                                    <div class="multiline-truncate-3">
-                                        {{ $article->body }}
+                                <div class="t-grid t-gap-4">
+                                    <div class="t-flex t-gap-4 t-flex-wrap">
+                                        <a href="{{ route('articles.show', $article->id) }}">
+                                            <span class="badge bg-primary">No. {{ $article->id }}</span>
+                                        </a>
+                                        <a href="{{ route('articles.show', $article->id) }}" class="t-mr-auto">
+                                            <span class="badge bg-secondary">
+                                                Date. {{ $article->created_at->format('y.m.d H:i') }}
+                                            </span>
+                                        </a>
+                                        <a href="{{ route('articles.show', $article->id) }}">
+                                            <span class="badge bg-success">
+                                                by {{ $article->user->name }}
+                                            </span>
+                                        </a>
                                     </div>
-                                </a>
+
+                                    <a href="{{ route('articles.show', $article->id) }}"
+                                        class="t-block card-title t-truncate">{{ $article->title }}</a>
+
+                                    <a href="{{ route('articles.show', $article->id) }}"
+                                        class="t-block card-text t-text-gray-500">
+                                        <div class="multiline-truncate-3">
+                                            {{ $article->body }}
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </li>

@@ -9,15 +9,17 @@
 
                 <div class="t-flex t-gap-4 t-flex-wrap">
                     <div>
-                        <span class="badge bg-primary">{{ $article->id }}</span>
+                        <span class="badge bg-primary">No. {{ $article->id }}</span>
                     </div>
                     <div class="t-mr-auto">
                         <span class="badge bg-secondary">
-                            {{ $article->created_at->format('y.m.d H:i') }}
+                            Date. {{ $article->created_at->format('y.m.d H:i') }}
                         </span>
                     </div>
                     <div>
-                        <span class="badge bg-success">{{ $article->user->name }}</span>
+                        <span class="badge bg-success">
+                            by {{ $article->user->name }}
+                        </span>
                     </div>
                 </div>
 
