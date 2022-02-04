@@ -32,6 +32,17 @@
                 <div class="t-text-gray-500">
                     {{ nl2br($article->body) }}
                 </div>
+
+                <div class="t-flex t-gap-4">
+                    <a href="{{ route('articles.index') }}" class="btn btn-link t-mr-auto">리스트</a>
+                    <a href="{{ route('articles.edit', $article->id) }}" href="#" class="btn btn-outline-secondary">수정</a>
+                    <form class="t-m-0" action="{{ route('articles.destroy', $article->id) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" onclick="if ( !confirm('정말 삭제하시겠습니까?') ) return false;"
+                            class="btn btn-outline-danger">삭제</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>

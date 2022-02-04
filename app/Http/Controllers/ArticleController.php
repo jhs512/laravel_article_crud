@@ -87,6 +87,9 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $id = $article->id;
+        $article->delete();
+
+        return redirect()->route('articles.index')->with('success', "{$id}번 게시물을 삭제하였습니다.");
     }
 }
