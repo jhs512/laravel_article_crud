@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Arr;
 use App\Models\Article;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ArticleSaveRequest;
 
 class ArticleController extends Controller
@@ -49,6 +48,11 @@ class ArticleController extends Controller
         $article->user_id = 1;
         $article->title = $validated['title'];
         $article->body = $validated['body'];
+
+        if ($request->hasFile('img_1')) {
+            $article->img_1 = $request->file('img_1')->store('article/' . date('Y/m/d'), 'public');
+        }
+
         $article->save();
 
         return redirect()->route('articles.show', $article->id)->with('success', "{$article->id}번 게시물이 작성되었습니다.");
@@ -94,6 +98,15 @@ class ArticleController extends Controller
 
         $article->title = $validated['title'];
         $article->body = $validated['body'];
+
+        if ($request->hasFile('img_1')) {
+            if ($article->img_1) {
+                Storage::disk('public')->delete($article->img_1);
+            }
+
+            $article->img_1 = $request->file('img_1')->store('article/' . date('Y/m/d'), 'public');
+        }
+
         $article->save();
 
         return redirect()->route('articles.show', $article->id)->with('success', "{$article->id}번 게시물을 수정하였습니다.");
@@ -108,6 +121,11 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $id = $article->id;
+
+        if ($article->img_1) {
+            Storage::disk('public')->delete($article->img_1);
+        }
+
         $article->delete();
 
         return redirect()->route('articles.index')->with('success', "{$id}번 게시물을 삭제하였습니다.");

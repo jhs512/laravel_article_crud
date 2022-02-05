@@ -26,6 +26,7 @@ class ArticleSaveRequest extends FormRequest
         return [
             'title' => 'required|max:100|min:2',
             'body' => 'required|max:5000|min:2',
+            'img_1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

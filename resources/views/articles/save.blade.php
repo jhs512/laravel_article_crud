@@ -13,7 +13,8 @@ $formMethod = $pageMode == 'write' ? 'POST' : 'PATCH';
         <div class="t-container t-mx-auto t-px-4">
             <h1 class="t-font-bold">게시물 {{ $pageModeHan }}</h1>
 
-            <form class="t-grid t-grid-cols-1 t-gap-4 t-mt-4" action="{{ $actionUrl }}" method="POST">
+            <form class="t-grid t-grid-cols-1 t-gap-4 t-mt-4" action="{{ $actionUrl }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method($formMethod)
                 @if ($pageMode == 'edit')
@@ -49,10 +50,21 @@ $formMethod = $pageMode == 'write' ? 'POST' : 'PATCH';
 
                 <div>
                     <label>내용</label>
-                    <textarea name="body" maxlength="5000" class="@error('body') is-invalid @enderror form-control"
-                        rows="10" placeholder="내용을 입력해주세요.">{{ old('body', $article->body) }}</textarea>
+                    <textarea name="body" class="@error('body') is-invalid @enderror form-control" rows="10"
+                        placeholder="내용을 입력해주세요.">{{ old('body', $article->body) }}</textarea>
 
                     @error('body')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div>
+                    <label>이미지 1</label>
+                    <input type="file" name="img_1" class="@error('img_1') is-invalid @enderror form-control">
+
+                    @error('img_1')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

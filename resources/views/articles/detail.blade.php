@@ -27,6 +27,14 @@
                     {{ $article->title }}
                 </div>
 
+                @if ($article->img_1)
+                    <div>
+                        <img src="{{ asset('storage/' . $article->img_1) }}" alt="{{ $article->title }}"
+                            class="t-rounded">
+                    </div>
+                @endif
+
+
                 <div class="t-text-gray-500">
                     {{ nl2br($article->body) }}
                 </div>
