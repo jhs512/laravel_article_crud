@@ -483,8 +483,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-mr-auto {
   margin-right: auto;
 }
-.t-mt-2 {
-  margin-top: 0.5rem;
+.t-ml-auto {
+  margin-left: auto;
 }
 .t-block {
   display: block;

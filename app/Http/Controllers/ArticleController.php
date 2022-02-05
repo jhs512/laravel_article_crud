@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Arr;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleSaveRequest;
 
 class ArticleController extends Controller
 {
@@ -28,8 +30,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        echo 'create';
-        //
+        return view('articles.save', [
+            'pageMode' => 'write',
+            'article' => new Article()
+        ]);
     }
 
     /**
@@ -38,9 +42,16 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleSaveRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $article = new Article();
+        $article->user_id = 1;
+        $article->title = $validated['title'];
+        $article->body = $validated['body'];
+        $article->save();
+
+        return redirect()->route('articles.show', $article->id)->with('success', "{$article->id}번 게시물이 작성되었습니다.");
     }
 
     /**
@@ -64,7 +75,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('articles.edit', [
+        return view('articles.save', [
+            'pageMode' => 'edit',
             'article' => $article
         ]);
     }
@@ -76,15 +88,12 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(ArticleSaveRequest $request, Article $article)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|max:20',
-            'body' => 'required',
-        ]);
+        $validated = $request->validated();
 
-        $article->title = $validatedData['title'];
-        $article->body = $validatedData['body'];
+        $article->title = $validated['title'];
+        $article->body = $validated['body'];
         $article->save();
 
         return redirect()->route('articles.show', $article->id)->with('success', "{$article->id}번 게시물을 수정하였습니다.");
